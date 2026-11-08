@@ -1,0 +1,10 @@
+numpy
+Pillow
+torch
+sentence-transformers
+scikit-learn
+pandas
+matplotlib
+gradio
+openai
+python-dotenv

@@ -1,0 +1,11 @@
+outputs/
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.cache/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+Thumbs.db

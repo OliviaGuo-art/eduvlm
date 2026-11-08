@@ -99,6 +99,7 @@ def main():
         default="outputs/qa_comparison_free_fall.json",
     )
     parser.add_argument("--top-k", type=int, default=3)
+    parser.add_argument("--max-tokens", type=int, default=700)
     args = parser.parse_args()
 
     if args.top_k < 1:
@@ -135,19 +136,19 @@ def main():
 
     print("\n=== RUNNING DIRECT VQA ===")
     direct_result = client.answer(
-        image_path=image_path,
-        question=args.question,
-        system_prompt=DIRECT_SYSTEM_PROMPT,
-    )
-
+    image_path=image_path,
+    question=args.question,
+    system_prompt=DIRECT_SYSTEM_PROMPT,
+    max_tokens=args.max_tokens,
+)
     print("\n=== RUNNING RETRIEVAL-AUGMENTED VQA ===")
     rag_result = client.answer(
-        image_path=image_path,
-        question=args.question,
-        system_prompt=RAG_SYSTEM_PROMPT,
-        evidence_text=evidence_text,
-    )
-
+    image_path=image_path,
+    question=args.question,
+    system_prompt=RAG_SYSTEM_PROMPT,
+    evidence_text=evidence_text,
+    max_tokens=args.max_tokens,
+)
     result = {
         "experiment": "direct_vs_retrieval_augmented_vqa",
         "model": client.model_name,
@@ -155,7 +156,7 @@ def main():
         "question": args.question,
         "generation": {
             "temperature": 0.2,
-            "max_tokens": 500,
+            "max_tokens": args.max_tokens,
             "enable_thinking": False,
         },
         "retriever": {
@@ -178,10 +179,14 @@ def main():
 
     print("\n=== DIRECT ANSWER ===")
     print(direct_result["answer"])
+    print("Finish reason:", direct_result["finish_reason"])
+    print("Finish reason:", rag_result["finish_reason"])
     print("Usage:", direct_result["usage"])
 
     print("\n=== RETRIEVAL-AUGMENTED ANSWER ===")
     print(rag_result["answer"])
+    print("Finish reason:", direct_result["finish_reason"])
+    print("Finish reason:", rag_result["finish_reason"])
     print("Usage:", rag_result["usage"])
 
     print("\nSaved:", output_path)

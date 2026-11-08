@@ -1,0 +1,8 @@
+{"query_id":"q001","query_text":"忽略空气阻力时，抛体运动的水平速度会一直改变吗？","query_image_path":null,"expected_doc_ids":["projectile_motion_001"],"question_type":"normal","reference_answer":"不会。忽略空气阻力时，水平方向速度保持不变，竖直方向速度受重力影响。","split":"dev"}
+{"query_id":"q002","query_text":"抛射物体的初速度和发射角度会影响哪些运动特征？","query_image_path":null,"expected_doc_ids":["projectile_motion_001"],"question_type":"paraphrase","reference_answer":"它们共同影响运动轨迹、最大高度和射程。","split":"dev"}
+{"query_id":"q003","query_text":"弹簧振子经过平衡位置时，回复力和速度分别有什么特点？","query_image_path":null,"expected_doc_ids":["simple_harmonic_motion_001"],"question_type":"normal","reference_answer":"经过平衡位置时回复力为零，速度大小通常达到最大。","split":"dev"}
+{"query_id":"q004","query_text":"振子到达最大位移处时，速度是否也达到最大？","query_image_path":null,"expected_doc_ids":["simple_harmonic_motion_001"],"question_type":"confusing","reference_answer":"不是。最大位移处速度为零，回复力大小较大。","split":"dev"}
+{"query_id":"q005","query_text":"串联电路和并联电路中，电流与电压分别有什么基本特点？","query_image_path":null,"expected_doc_ids":["series_parallel_circuit_001"],"question_type":"normal","reference_answer":"串联元件通过相同电流，电压按元件分配；并联支路两端电压相同，总电流按支路分配。","split":"dev"}
+{"query_id":"q006","query_text":"面对一个混合电路，应该怎样逐步求等效电阻？","query_image_path":null,"expected_doc_ids":["series_parallel_circuit_001"],"question_type":"paraphrase","reference_answer":"先识别局部串联或并联结构，再逐步化简，同时保留原电路的连接关系。","split":"dev"}
+{"query_id":"q007","query_text":"串联电路中，每个电阻两端的电压都相同吗？","query_image_path":null,"expected_doc_ids":["series_parallel_circuit_001"],"question_type":"confusing","reference_answer":"不一定。串联电路中电流相同，电压按元件分配；并联支路两端电压才相同。","split":"dev"}
+{"query_id":"q008","query_text":"如何用量子纠缠解释这份物理资料库中的电路图？","query_image_path":null,"expected_doc_ids":[],"question_type":"out_of_domain","reference_answer":null,"split":"dev"}

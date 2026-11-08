@@ -40,6 +40,8 @@ queries = [
     {"query_id": "q2", "text": "coffee beans beside a drink", "expected": "coffee"},
     {"query_id": "q3", "text": "a furry feline", "expected": "cat"},
     {"query_id": "q4", "text": "a space rocket before launch", "expected": "rocket"},
+    {"query_id": "q5", "text": "一只猫", "expected": "cat"},
+    {"query_id": "q6", "text": "a bicycle on the road", "expected": "none"},
 ]
 
 print("Loading CLIP model on CPU...")
@@ -61,6 +63,9 @@ image_embeddings = model.encode(
     normalize_embeddings=True,
     show_progress_bar=True,
 )
+
+norms = np.linalg.norm(image_embeddings, axis=1)
+print("Image embedding norms:", norms)
 
 
 print("Encoding candidate captions...")
@@ -124,7 +129,11 @@ for index, query in enumerate(queries):
             f"score={result['score']:.4f}"
         )
 
-accuracy = correct / len(queries)
+closed_set_queries = [
+    query for query in queries
+    if query["expected"] != "none"
+]
+accuracy = correct / len(closed_set_queries)
 
 summary = {
     "model": "sentence-transformers/clip-ViT-B-32",

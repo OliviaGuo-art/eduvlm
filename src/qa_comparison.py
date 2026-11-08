@@ -180,12 +180,10 @@ def main():
     print("\n=== DIRECT ANSWER ===")
     print(direct_result["answer"])
     print("Finish reason:", direct_result["finish_reason"])
-    print("Finish reason:", rag_result["finish_reason"])
     print("Usage:", direct_result["usage"])
 
     print("\n=== RETRIEVAL-AUGMENTED ANSWER ===")
     print(rag_result["answer"])
-    print("Finish reason:", direct_result["finish_reason"])
     print("Finish reason:", rag_result["finish_reason"])
     print("Usage:", rag_result["usage"])
 
